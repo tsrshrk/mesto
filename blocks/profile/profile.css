@@ -1,0 +1,8 @@
+.profile {
+  max-width: calc(100% - 200px*2);
+  display: grid;
+  grid-template-columns: 120px 1fr 150px;
+  column-gap: 30px;
+  margin: 0 auto;
+  color: #fff;
+}

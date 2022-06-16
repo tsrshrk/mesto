@@ -4,3 +4,10 @@
 @import url(../blocks/page/__container/page__container.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/logo/logo.css);
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__useravatar/profile__useravatar.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__username/profile__username.css);
+@import url(../blocks/profile/__button-edit/profile__button-edit.css);
+@import url(../blocks/profile/__userprofession/profile__userprofession.css);
+@import url(../blocks/profile/__button-add/profile__button-add.css);

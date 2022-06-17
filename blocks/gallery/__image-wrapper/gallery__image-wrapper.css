@@ -1,0 +1,5 @@
+.gallery__image-wrapper {
+  line-height: 0;
+  height: 282px;
+  grid-area: image;
+}

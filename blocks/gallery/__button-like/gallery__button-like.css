@@ -1,0 +1,20 @@
+.gallery__button-like {
+  grid-area: button;
+  background-image: url(../../../images/icons/like.svg);
+  background-repeat: no-repeat;
+  width: 22px;
+  height: 19px;
+  border: none;
+  background-color: #fff;
+  margin: 0 20px 0 15px;
+  cursor: pointer;
+  transition: opacity .3s linear .3s;
+}
+
+/*.gallery__button-like:active {
+  background-image: url(../../../images/icons/like_active.svg);
+}*/
+
+.gallery__button-like:hover {
+  opacity: .6;
+}

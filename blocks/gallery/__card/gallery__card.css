@@ -1,0 +1,11 @@
+.gallery__card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr 79px;
+  grid-template-areas:
+  "image image"
+  "title button";
+  background-color: #fff;
+  border-radius: 9px;
+  align-items: center;
+}

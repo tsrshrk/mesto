@@ -13,3 +13,13 @@
     column-gap: 25px;
   }
 }
+
+@media screen and (max-width: 744px) {
+  .profile {
+    max-width: calc(100% - 19px*2);
+    grid-template-columns: 1fr;
+    grid-template-rows: 120px 1fr 50px;
+    justify-items: center;
+    row-gap: 26px;
+  }
+}

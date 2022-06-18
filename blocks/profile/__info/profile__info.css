@@ -5,3 +5,14 @@
   row-gap: 16px;
   align-content: center;
 }
+
+@media screen and (max-width: 744px) {
+  .profile__info {
+    column-gap: 10px;
+    row-gap: 14px;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-areas: 
+    ". username button-edit"
+    "userprofession userprofession userprofession";
+  }
+}

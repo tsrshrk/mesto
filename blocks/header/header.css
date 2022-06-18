@@ -4,3 +4,10 @@
   margin: 45px auto 40px;
   border-bottom: 1px solid rgba(54, 54, 54, 0.9);
 }
+
+@media screen and (max-width: 913px) {
+  .header {
+    margin-top: 40px;
+    max-width: calc(100% - 20px*2);
+  }
+}

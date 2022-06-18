@@ -9,3 +9,9 @@
   row-gap: 20px;
   color: #000;
 }
+
+@media screen and (max-width: 913px) {
+  .gallery {
+    margin: 45px 20px 50px;
+  }
+}

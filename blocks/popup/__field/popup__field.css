@@ -1,4 +1,4 @@
-.popup__username {
+.popup__field {
     width: 100%;
     font-weight: 400;
     font-size: 14px;
@@ -10,10 +10,10 @@
     margin-bottom: 30px;
 }
 
-.popup__username:last-of-type {
+.popup__field:last-of-type {
     margin-bottom: 0;
 }
 
-.popup__username:focus {
+.popup__field:focus {
     outline: none;
 }

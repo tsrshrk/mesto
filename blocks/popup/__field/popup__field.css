@@ -2,12 +2,12 @@
     width: 100%;
     font-weight: 400;
     font-size: 14px;
-    line-height: 1.2;
+    line-height: 1.21;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
     padding: 0 0 5px;
     box-sizing: border-box;
-    margin-bottom: 30px;
+    margin-bottom: 29px;
 }
 
 .popup__field:last-of-type {

@@ -18,3 +18,11 @@
     padding-left: 19px;
   }
 }
+
+@media screen and (max-width: 500px) {
+  .header {
+    margin: 28px auto 41px;
+    padding-left: 27px;
+    min-height: 56px;
+  }
+}

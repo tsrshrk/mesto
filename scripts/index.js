@@ -5,8 +5,8 @@ const popupSubmitButton = document.querySelector('.popup__button-submit');
 const popup = document.querySelector('.popup');
 const form = document.querySelector('.popup__form');
 
-const profileUserName = document.querySelector('.profile__username');
-const profileUserProfession = document.querySelector('.profile__userprofession');
+const profileUserName = document.querySelector('.profile__user-name');
+const profileUserProfession = document.querySelector('.profile__user-profession');
 
 const nameInput = document.querySelector('.popup__field_input_name');
 const professionInput = document.querySelector('.popup__field_input_profession');

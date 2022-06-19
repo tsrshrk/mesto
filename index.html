@@ -81,19 +81,19 @@
     </footer>
 
     <!-- Popup -->
-    <section class="popup">
+    <div class="popup">
       <div class="popup__container">
         <button class="popup__button-close" type="button"></button>
-        <form name="form-userdata">
+        <form name="form-userdata" class="popup__form">
           <fieldset class="popup__fields">
             <legend class="popup__title">Редактировать профиль</legend>
-            <input class="popup__field" name="form-username" type="text" placeholder="Имя" required>
-            <input class="popup__field" name="form-userprofession" type="text" placeholder="О себе" required>
+            <input class="popup__field popup__field_input_name" name="form-username" type="text" placeholder="Имя" required>
+            <input class="popup__field popup__field_input_profession" name="form-userprofession" type="text" placeholder="О себе" required>
           </fieldset>
           <button class="popup__button-submit" type="submit">Сохранить</button>
         </form>
       </div>
-    </section>
+    </div>
   </div>
   <script src="./scripts/index.js"></script>
 </body>

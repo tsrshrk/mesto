@@ -1,39 +1,43 @@
-const editButton = document.querySelector('.profile__button-edit');
-const closeButton = document.querySelector('.popup__button-close');
-const submitButton = document.querySelector('.popup__button-submit');
+const profileEditButton = document.querySelector('.profile__button-edit');
+const popupCloseButton = document.querySelector('.popup__button-close');
+const popupSubmitButton = document.querySelector('.popup__button-submit');
 
-let sectionPopup = document.querySelector('.popup');
-let form = document.querySelector('.form-userdata');
+const popup = document.querySelector('.popup');
+const form = document.querySelector('.popup__form');
 
-let nameDoc = document.querySelector('.profile__username');
-let profession = document.querySelector('.profile__userprofession');
+const profileUserName = document.querySelector('.profile__username');
+const profileUserProfession = document.querySelector('.profile__userprofession');
 
-let newName = document.querySelector('input[name="form-username"]');
-let newProfession = document.querySelector('input[name="form-userprofession"]');
+const nameInput = document.querySelector('.popup__field_input_name');
+const professionInput = document.querySelector('.popup__field_input_profession');
 
-function fieldsFull() {
-  newName.value = nameDoc.textContent;
-  newProfession.value = profession.textContent;
+function fillInputs() {
+  nameInput.value = profileUserName.textContent;
+  professionInput.value = profileUserProfession.textContent;
 }
 
 function openPopup() {
-  sectionPopup.classList.add('popup_opened');
-  fieldsFull();
+  fillInputs();
+  popup.classList.add('popup_opened');
 }
 
 function closePopup() {
-  sectionPopup.classList.remove('popup_opened');
+  popup.classList.remove('popup_opened');
 }
 
-function fieldsSave (evt) { //для submit (!)
-  evt.preventDefault();
-  if (newName.value.trim() != '' && newProfession.value.trim() != '') {
-  nameDoc.textContent = newName.value;
-  profession.textContent = newProfession.value;
-  closePopup();
+function saveInputs() {
+  if (nameInput.value.trim() != '' && professionInput.value.trim() != '') {
+    profileUserName.textContent = nameInput.value;
+    profileUserProfession.textContent = professionInput.value;
+    closePopup();
   }
 }
 
-editButton.addEventListener('click', openPopup);
-closeButton.addEventListener('click', closePopup);
-submitButton.addEventListener('click', fieldsSave); //переделать на submit в следующем спринте
+function stopDefaultEvent(evt) {
+  evt.preventDefault();
+}
+
+profileEditButton.addEventListener('click', openPopup);
+popupCloseButton.addEventListener('click', closePopup);
+popupSubmitButton.addEventListener('click', saveInputs);
+form.addEventListener('submit', stopDefaultEvent);

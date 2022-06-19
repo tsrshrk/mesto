@@ -5,7 +5,7 @@
     line-height: 1.21;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
-    padding: 0 0 5px;
+    padding: 0 0 7px;
     box-sizing: border-box;
     margin-bottom: 29px;
 }
@@ -15,5 +15,5 @@
 }
 
 .popup__field:focus {
-    outline: none;
+    outline: #25b7ed ridge;
 }

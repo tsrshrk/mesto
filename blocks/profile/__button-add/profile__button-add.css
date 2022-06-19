@@ -10,6 +10,7 @@
   transition: opacity .3s linear .3s;
   align-self: center;
 }
+
 .profile__button-add:hover {
   opacity: .6;
 }

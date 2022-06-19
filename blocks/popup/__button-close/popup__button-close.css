@@ -5,8 +5,8 @@
     background-image: url(../../../images/icons/Close_Icon.svg);
     border: none;
     position: absolute;
-    top: -38px;
-    right: -35px;
+    top: -40px;
+    right: -39px;
     cursor: pointer;
     transition: opacity .3s linear .3s;
 }

@@ -10,8 +10,8 @@
 
 @media screen and (max-width: 744px) {
   .profile__user-name {
-  font-size: 27px;
-  line-height: 1.22;
-  grid-area: username;
+    font-size: 27px;
+    line-height: 1.22;
+    grid-area: username;
   }
 }

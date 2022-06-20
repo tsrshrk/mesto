@@ -25,7 +25,8 @@ function closePopup() {
   popup.classList.remove('popup_opened');
 }
 
-function saveInputs() {
+function formSubmitHandler(event) {
+  event.preventDefault();
   if (nameInput.value.trim() != '' && professionInput.value.trim() != '') {
     profileUserName.textContent = nameInput.value;
     profileUserProfession.textContent = professionInput.value;
@@ -33,11 +34,6 @@ function saveInputs() {
   }
 }
 
-function stopDefaultEvent(evt) {
-  evt.preventDefault();
-}
-
 profileEditButton.addEventListener('click', openPopup);
 popupCloseButton.addEventListener('click', closePopup);
-popupSubmitButton.addEventListener('click', saveInputs);
-form.addEventListener('submit', stopDefaultEvent);
+form.addEventListener('submit', formSubmitHandler);

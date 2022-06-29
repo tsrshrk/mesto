@@ -30,7 +30,14 @@
 
       <section>
         <ul class="gallery">
-          <li class="gallery__card">
+          <template id="template">
+            <li class="gallery__card">
+              <img class="gallery__image" src="" alt="">
+              <h2 class="gallery__title"></h2>
+              <button class="gallery__button-like" type="button" aria-label="Лайк"></button>
+            </li>
+          </template>
+          <!-- <li class="gallery__card">
             <img class="gallery__image" src="./images/gallery__kamchatka.jpg" alt="Горы Камчатки">
             <h2 class="gallery__title">Камчатка</h2>
             <button class="gallery__button-like" type="button" aria-label="Лайк"></button>
@@ -59,7 +66,7 @@
             <img class="gallery__image" src="./images/gallery__kul_sharif.jpg" alt="Кул-Шариф">
             <h2 class="gallery__title">Мечеть "Кул-Шариф"</h2>
             <button class="gallery__button-like" type="button" aria-label="Лайк"></button>
-          </li>
+          </li> -->
         </ul>
       </section>
     </main>

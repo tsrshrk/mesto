@@ -47,12 +47,18 @@ function render() {
     card.querySelector('.gallery__title').textContent = item.name;
     const deleteButton = card.querySelector('.gallery__button-delete');
     deleteButton.addEventListener('click', removeCard);
+    const likeButton = card.querySelector('.gallery__button-like');
+    likeButton.addEventListener('click', like);
     cardsGallery.append(card);
   });
 }
 
 function removeCard(event) {
   event.target.closest('.gallery__card').remove();
+}
+
+function like(event) {
+  event.target.classList.toggle('gallery__button-like_active');
 }
 
 function fillInputs() {

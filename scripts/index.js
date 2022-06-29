@@ -45,8 +45,14 @@ function render() {
     const card = cardTemplate.querySelector('.gallery__card').cloneNode(true);
     card.querySelector('.gallery__image').src = item.link;
     card.querySelector('.gallery__title').textContent = item.name;
+    const deleteButton = card.querySelector('.gallery__button-delete');
+    deleteButton.addEventListener('click', removeCard);
     cardsGallery.append(card);
   });
+}
+
+function removeCard(event) {
+  event.target.closest('.gallery__card').remove();
 }
 
 function fillInputs() {

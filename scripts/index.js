@@ -40,16 +40,24 @@ const professionInput = document.querySelector('.popup__field_input_profession')
 const cardsGallery = document.querySelector('.gallery');
 const cardTemplate = document.querySelector('#template').content;
 
-function render() {
-  initialCards.forEach(function(item) {
-    const card = cardTemplate.querySelector('.gallery__card').cloneNode(true);
-    card.querySelector('.gallery__image').src = item.link;
-    card.querySelector('.gallery__title').textContent = item.name;
+const createCard = (link, name) => {
+  const card = cardTemplate.querySelector('.gallery__card').cloneNode(true); //клонируем содержимое темплейта
+  const cardImage = card.querySelector('.gallery__image');
+    cardImage.src = link;//по идее должны класть содержимое
+    cardImage.alt = name;
+    card.querySelector('.gallery__title').textContent = name;//the same
     const deleteButton = card.querySelector('.gallery__button-delete');
     deleteButton.addEventListener('click', removeCard);
     const likeButton = card.querySelector('.gallery__button-like');
-    likeButton.addEventListener('click', like);
-    cardsGallery.append(card);
+    likeButton.addEventListener('click', likeHandler);
+    console.log(card);
+  return card;//возвращаем готовую карточку
+}
+
+const render = () => {
+  initialCards.forEach(el => {   //для каждого элемента (card/el/item) входного массива 
+    const markup = createCard(el.link, el.name); //генерим карточку с содержимым элемента массива
+    cardsGallery.append(markup); //добавляем в DOM
   });
 }
 
@@ -57,7 +65,7 @@ function removeCard(event) {
   event.target.closest('.gallery__card').remove();
 }
 
-function like(event) {
+function likeHandler(event) {
   event.target.classList.toggle('gallery__button-like_active');
 }
 

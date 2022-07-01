@@ -55,14 +55,19 @@ const createCard = (link, name) => {
 }
 
 const render = () => {
-  initialCards.forEach(el => {   //для каждого элемента (card/el/item) входного массива 
+  initialCards.forEach(el => {   //для каждого элемента (card/el/item) входного массива
     const markup = createCard(el.link, el.name); //генерим карточку с содержимым элемента массива
     cardsGallery.append(markup); //добавляем в DOM
   });
 }
 
 function removeCard(event) {
-  event.target.closest('.gallery__card').remove();
+  const cardRemoved = event.target.closest('.gallery__card');
+  const deleteButton = cardRemoved.querySelector('.gallery__button-delete');
+  deleteButton.removeEventListener('click', removeCard);
+  const likeButton = cardRemoved.querySelector('.gallery__button-like');
+  likeButton.removeEventListener('click', likeHandler);
+  cardRemoved.remove();
 }
 
 function likeHandler(event) {
@@ -79,7 +84,7 @@ function openPopup() {
   popup.classList.add('popup_opened');
 }
 
-function closePopup() {
+function closePopup() {//TODO clear popup
   popup.classList.remove('popup_opened');
 }
 

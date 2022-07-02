@@ -43,10 +43,16 @@ const addCardForm = document.querySelector('.popup__form-add-card');
 const cardTitleInput = document.querySelector('.popup__field_input_card_title');
 const cardImageInput = document.querySelector('.popup__field_input_card_image');
 
+//img
+const imgPopup = document.querySelector('.popup_img');
+const imgPopupCloseButton = document.querySelector('.popup__button-close-img');
+const truescaleImg = document.querySelector('.popup__truscale-img');
+const truescaleImgTitle = document.querySelector('.popup__truscale-img-title');
+
 const cardsGallery = document.querySelector('.gallery');
 const cardTemplate = document.querySelector('#template').content;
 
-const render = () => {
+const renderCards = () => {
   initialCards.forEach(el => {   //для каждого элемента (card/el/item) входного массива
     const markup = createCard(el.link, el.name); //генерим карточку с содержимым элемента массива
     cardsGallery.append(markup); //добавляем в DOM
@@ -59,6 +65,8 @@ const removeCard = (event) => {
     deleteButton.removeEventListener('click', removeCard);
   const likeButton = cardRemoved.querySelector('.gallery__button-like');
     likeButton.removeEventListener('click', likeHandler);
+  const cardImage = cardRemoved.querySelector('.gallery__image');
+    cardImage.removeEventListener('click', handleShowImg);
   cardRemoved.remove();
 }
 
@@ -69,6 +77,12 @@ const likeHandler = (event) => {
 const fillInputs = () => {
   nameInput.value = profileUserName.textContent;
   professionInput.value = profileUserProfession.textContent;
+}
+
+const fillImgPopup = (link, name) => {
+  truescaleImg.src = link;
+  truescaleImg.alt = name;
+  truescaleImgTitle.textContent = name;
 }
 
 const openPopup = (popup) => {
@@ -82,6 +96,11 @@ const handleEditProfile = () => {
 
 const handleAddCard = () => {
   openPopup(addCardPopup);
+}
+
+const handleShowImg = (link, name) => {
+  fillImgPopup(link, name);
+  openPopup(imgPopup);
 }
 
 const closePopup = (popup) => {
@@ -100,17 +119,22 @@ const handleCloseAddCard = () => {
   closePopup(addCardPopup);
 }
 
+const handleCloseImgPopup = () => {
+  closePopup(imgPopup);
+}
+
 const createCard = (link, name) => {
   const card = cardTemplate.querySelector('.gallery__card').cloneNode(true);
-    card.querySelector('.gallery__title').textContent = name;//the same //клонируем содержимое темплейта
+    card.querySelector('.gallery__title').textContent = name;
   const cardImage = card.querySelector('.gallery__image');
-    cardImage.src = link;//по идее должны класть содержимое
+    cardImage.src = link;
     cardImage.alt = name;
+    cardImage.addEventListener('click', () => handleShowImg(link, name));
   const deleteButton = card.querySelector('.gallery__button-delete');
     deleteButton.addEventListener('click', removeCard);
   const likeButton = card.querySelector('.gallery__button-like');
     likeButton.addEventListener('click', likeHandler);
-  return card;//возвращаем готовую карточку
+  return card;
 }
 
 const profileFormSubmitHandler = (event) => {
@@ -122,10 +146,25 @@ const profileFormSubmitHandler = (event) => {
   }
 }
 
+const addCardFormSubmitHandler = (event) => {
+  event.preventDefault();
+  if (cardTitleInput.value.trim() != '' && cardImageInput.value.trim() != '') {
+    const link = cardImageInput.value;
+    const name = cardTitleInput.value;
+    const markup = createCard(link, name);
+    cardsGallery.prepend(markup);
+    handleCloseAddCard();
+  }
+}
+
 profileEditButton.addEventListener('click', handleEditProfile);
 profilePopupCloseButton.addEventListener('click', handleCloseProfile);
 profileForm.addEventListener('submit', profileFormSubmitHandler);
 
 addCardButton.addEventListener('click', handleAddCard);
 addCardPopupCloseButton.addEventListener('click', handleCloseAddCard);
-render();
+addCardForm.addEventListener('submit', addCardFormSubmitHandler);
+
+imgPopupCloseButton.addEventListener('click', handleCloseImgPopup);
+
+renderCards();

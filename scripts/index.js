@@ -40,8 +40,8 @@ const addCardButton = document.querySelector('.profile__button-add');
 const addCardPopup = document.querySelector('.popup_add-card');
 const addCardPopupCloseButton = document.querySelector('.popup__button-close-add-card');
 const addCardForm = document.querySelector('.popup__form-add-card');
-const cardTitleInput = document.querySelector('.popup__field_input_card_title');
-const cardImageInput = document.querySelector('.popup__field_input_card_image');
+const cardTitleInput = document.querySelector('.popup__field_input_card-title');
+const cardImageInput = document.querySelector('.popup__field_input_card-image');
 
 //img
 const imgPopup = document.querySelector('.popup_img');

@@ -48,11 +48,11 @@
     </footer>
 
     <!-- Popup -->
-    <div class="popup">
+    <div class="popup popup_user-data">
       <div class="popup__container">
-        <button class="popup__button-close" type="button" aria-label="Закрыть"></button>
+        <button class="popup__button-close popup__button-close-profile" type="button" aria-label="Закрыть"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form name="form-userdata" class="popup__form">
+        <form name="form-userdata" class="popup__form popup__form-data">
           <fieldset class="popup__fields">
             <input class="popup__field popup__field_input_name" name="form-username" type="text" placeholder="Имя" required>
             <input class="popup__field popup__field_input_profession" name="form-userprofession" type="text" placeholder="О себе" required>
@@ -61,6 +61,21 @@
         </form>
       </div>
     </div>
+
+    <div class="popup popup_add-card">
+      <div class="popup__container">
+        <button class="popup__button-close popup__button-close-add-card" type="button" aria-label="Закрыть"></button>
+        <h2 class="popup__title">Новое место</h2>
+        <form name="form-add-card" class="popup__form popup__form-add-card">
+          <fieldset class="popup__fields">
+            <input class="popup__field popup__field_input_card_title" name="form-cardtitle" type="text" placeholder="Название" required>
+            <input class="popup__field popup__field_input_card_image" name="form-cardimage" type="text" placeholder="Ссылка на картинку" required>
+          </fieldset>
+          <button class="popup__button-submit" type="submit">Создать</button>
+        </form>
+      </div>
+    </div>
+
   </div>
   <script src="./scripts/index.js"></script>
 </body>

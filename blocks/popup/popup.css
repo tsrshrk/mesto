@@ -9,6 +9,9 @@
   left: 0px;
   justify-content: center;
   align-items: center;
-  display: none;
+  display: flex;
   z-index: 2;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility .2s, opacity .2s linear;
 }

@@ -36,10 +36,10 @@ const nameInput = document.querySelector('.popup__field_input_name');
 const professionInput = document.querySelector('.popup__field_input_profession');
 
 //add
-const addCardButton = document.querySelector('.profile__button-add');
-const addCardPopup = document.querySelector('.popup_add-card');
-const addCardPopupCloseButton = document.querySelector('.popup__button-close-add-card');
-const addCardForm = document.querySelector('.popup__form-add-card');
+const cardAddButton = document.querySelector('.profile__button-add');
+const cardAddPopup = document.querySelector('.popup_add-card');
+const cardAddPopupCloseButton = document.querySelector('.popup__button-close-add-card');
+const cardAddForm = document.querySelector('.popup__form-add-card');
 const cardTitleInput = document.querySelector('.popup__field_input_card-title');
 const cardImageInput = document.querySelector('.popup__field_input_card-image');
 
@@ -61,16 +61,10 @@ const renderCards = () => {
 
 const removeCard = (event) => {
   const cardRemoved = event.target.closest('.gallery__card');
-  const deleteButton = cardRemoved.querySelector('.gallery__button-delete');
-    deleteButton.removeEventListener('click', removeCard);
-  const likeButton = cardRemoved.querySelector('.gallery__button-like');
-    likeButton.removeEventListener('click', likeHandler);
-  const cardImage = cardRemoved.querySelector('.gallery__image');
-    cardImage.removeEventListener('click', handleShowImg);
   cardRemoved.remove();
 }
 
-const likeHandler = (event) => {
+const handleLikeButton = (event) => {
   event.target.classList.toggle('gallery__button-like_active');
 }
 
@@ -95,7 +89,7 @@ const handleEditProfile = () => {
 }
 
 const handleAddCard = () => {
-  openPopup(addCardPopup);
+  openPopup(cardAddPopup);
 }
 
 const handleShowImg = (link, name) => {
@@ -108,15 +102,13 @@ const closePopup = (popup) => {
 }
 
 const handleCloseProfile = () => {
-  nameInput.value = '';
-  professionInput.value = '';
   closePopup(profilePopup);
 }
 
 const handleCloseAddCard = () => {
-  cardTitleInput.value = '';
+  cardTitleInput.value = '';//TODO разобраться почему reset() деактивирует closePopup на всей форме
   cardImageInput.value = '';
-  closePopup(addCardPopup);
+  closePopup(cardAddPopup);
 }
 
 const handleCloseImgPopup = () => {
@@ -130,10 +122,10 @@ const createCard = (link, name) => {
     cardImage.src = link;
     cardImage.alt = name;
     cardImage.addEventListener('click', () => handleShowImg(link, name));
-  const deleteButton = card.querySelector('.gallery__button-delete');
-    deleteButton.addEventListener('click', removeCard);
-  const likeButton = card.querySelector('.gallery__button-like');
-    likeButton.addEventListener('click', likeHandler);
+  const buttonDelete = card.querySelector('.gallery__button-delete');
+    buttonDelete.addEventListener('click', removeCard);
+  const buttonLike = card.querySelector('.gallery__button-like');
+    buttonLike.addEventListener('click', handleLikeButton);
   return card;
 }
 
@@ -161,9 +153,9 @@ profileEditButton.addEventListener('click', handleEditProfile);
 profilePopupCloseButton.addEventListener('click', handleCloseProfile);
 profileForm.addEventListener('submit', profileFormSubmitHandler);
 
-addCardButton.addEventListener('click', handleAddCard);
-addCardPopupCloseButton.addEventListener('click', handleCloseAddCard);
-addCardForm.addEventListener('submit', addCardFormSubmitHandler);
+cardAddButton.addEventListener('click', handleAddCard);
+cardAddPopupCloseButton.addEventListener('click', handleCloseAddCard);
+cardAddForm.addEventListener('submit', addCardFormSubmitHandler);
 
 imgPopupCloseButton.addEventListener('click', handleCloseImgPopup);
 

@@ -52,6 +52,8 @@ const truescaleImgTitle = document.querySelector('.popup__truscale-img-title');
 const cardsGallery = document.querySelector('.gallery');
 const cardTemplate = document.querySelector('#template').content;
 
+const popupList = Array.from(document.querySelectorAll('.popup'));
+
 const renderCards = () => {
   initialCards.forEach(el => {   //для каждого элемента (card/el/item) входного массива
     const markup = createCard(el.link, el.name); //генерим карточку с содержимым элемента массива
@@ -81,6 +83,7 @@ const fillImgPopup = (link, name) => {
 
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
+  window.addEventListener('keydown', handleEscape);
 }
 
 const handleEditProfile = () => {
@@ -99,6 +102,14 @@ const handleShowImg = (link, name) => {
 
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
+  window.removeEventListener('keydown', handleEscape);
+}
+
+const handleEscape = (evt) => {
+  if (evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+  }
 }
 
 const handleCloseProfile = () => {
@@ -148,6 +159,12 @@ const addCardFormSubmitHandler = (event) => {
     handleCloseAddCard();
   }
 }
+
+//popupList.forEach((listElement) => {
+//  listElement.addEventListener('mousedown', () => {
+//    closePopup(listElement);
+//  });
+//})
 
 profileEditButton.addEventListener('click', handleEditProfile);
 profilePopupCloseButton.addEventListener('click', handleCloseProfile);

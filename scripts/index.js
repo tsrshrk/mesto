@@ -108,7 +108,7 @@ const closePopup = (popup) => {
 const handleEscape = (evt) => {
   if (evt.key === 'Escape') {
     const popupOpened = document.querySelector('.popup_opened');
-    closePopup(popupOpened);
+    handleCloseOverlay(popupOpened);
   }
 }
 
@@ -117,8 +117,7 @@ const handleCloseProfile = () => {
 }
 
 const handleCloseAddCard = () => {
-  cardTitleInput.value = '';//TODO разобраться почему reset() деактивирует closePopup на всей форме
-  cardImageInput.value = '';
+  cardAddForm.reset();
   closePopup(cardAddPopup);
 }
 
@@ -160,10 +159,16 @@ const addCardFormSubmitHandler = (event) => {
   }
 }
 
+const handleCloseOverlay = (popup) => {
+  closePopup(popup);
+  const currentForm = popup.querySelector('.popup__form');//очищаем поля формы
+  currentForm.reset();//после закрытия по клику на оверлей
+}
+
 popupList.forEach((listElement) => {
   listElement.addEventListener('mousedown', (evt) => {
     if (evt.target.classList.contains('popup_opened')) {
-      closePopup(listElement);
+      handleCloseOverlay(listElement);
     }
   })
 })

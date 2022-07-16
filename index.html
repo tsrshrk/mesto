@@ -47,8 +47,8 @@
         <h2 class="popup__title">Редактировать профиль</h2>
         <form name="form-userdata" class="popup__form popup__form-data">
           <fieldset class="popup__fields">
-            <input class="popup__field popup__field_input_name" name="form-username" type="text" placeholder="Имя" required>
-            <input class="popup__field popup__field_input_profession" name="form-userprofession" type="text" placeholder="О себе" required>
+            <input class="popup__field popup__field_input_name" name="form-username" type="text" placeholder="Имя" minlength="2" maxlength="40" required>
+            <input class="popup__field popup__field_input_profession" name="form-userprofession" type="text" placeholder="О себе" minlength="2" maxlength="200" required>
           </fieldset>
           <button class="popup__button-submit" type="submit">Сохранить</button>
         </form>
@@ -61,8 +61,8 @@
         <h2 class="popup__title">Новое место</h2>
         <form name="form-add-card" class="popup__form popup__form-add-card">
           <fieldset class="popup__fields">
-            <input class="popup__field popup__field_input_card-title" name="form-cardtitle" type="text" placeholder="Название" required>
-            <input class="popup__field popup__field_input_card-image" name="form-cardimage" type="text" placeholder="Ссылка на картинку" required>
+            <input class="popup__field popup__field_input_card-title" name="form-cardtitle" type="text" placeholder="Название" minlength="2" maxlength="30" required>
+            <input class="popup__field popup__field_input_card-image" name="form-cardimage" type="url" placeholder="Ссылка на картинку" required>
           </fieldset>
           <button class="popup__button-submit" type="submit">Создать</button>
         </form>

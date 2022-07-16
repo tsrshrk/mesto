@@ -160,11 +160,13 @@ const addCardFormSubmitHandler = (event) => {
   }
 }
 
-//popupList.forEach((listElement) => {
-//  listElement.addEventListener('mousedown', () => {
-//    closePopup(listElement);
-//  });
-//})
+popupList.forEach((listElement) => {
+  listElement.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(listElement);
+    }
+  })
+})
 
 profileEditButton.addEventListener('click', handleEditProfile);
 profilePopupCloseButton.addEventListener('click', handleCloseProfile);

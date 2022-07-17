@@ -163,9 +163,13 @@ const addCardFormSubmitHandler = () => {
 }
 
 const handleCloseOverlay = (popup) => {
-  closePopup(popup);
-  const currentForm = popup.querySelector('.popup__form');//очищаем поля формы
-  currentForm.reset();//после закрытия по клику на оверлей
+  if (popup.classList.contains('popup_img')) {
+    closePopup(popup);
+  } else {
+    const currentForm = popup.querySelector('.popup__form');//очищаем поля формы
+    currentForm.reset();//после закрытия по клику на оверлей
+    closePopup(popup);
+  }
 }
 
 popupList.forEach((listElement) => {

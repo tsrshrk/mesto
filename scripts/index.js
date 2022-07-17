@@ -94,7 +94,6 @@ const disableButton = (popup) => {
 }
 
 const handleEditProfile = () => {
-  fillInputs();
   disableButton(profilePopup);
   openPopup(profilePopup);
 }
@@ -148,9 +147,13 @@ const createCard = (link, name) => {
   return card;
 }
 
-const profileFormSubmitHandler = () => {
+const saveInputs = () => {
   profileUserName.textContent = nameInput.value;
   profileUserProfession.textContent = professionInput.value;
+}
+
+const profileFormSubmitHandler = () => {
+  saveInputs();
   handleCloseProfile();
 }
 
@@ -164,13 +167,15 @@ const addCardFormSubmitHandler = () => {
 
 const handleCloseOverlay = (popup) => {
   if (popup.classList.contains('popup_img')) {
-    closePopup(popup);
+    handleCloseImgPopup();
+  } else if (popup.classList.contains('popup_add-card')) {
+    handleCloseAddCard();
   } else {
-    const currentForm = popup.querySelector('.popup__form');//очищаем поля формы
-    currentForm.reset();//после закрытия по клику на оверлей
-    closePopup(popup);
+    handleCloseProfile();
   }
 }
+
+fillInputs();
 
 popupList.forEach((listElement) => {
   listElement.addEventListener('mousedown', (evt) => {

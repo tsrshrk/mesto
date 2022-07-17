@@ -1,7 +1,13 @@
 .popup__button-submit_disabled {
-  margin-top: 18px;
+  margin-top: 30px;
   background-color: #fff;
   color: #000;
   border: 1px solid #000;
   opacity: .2;
+}
+
+.popup__button-submit_disabled:hover {
+  background-color: #000;
+  color: #fff;
+  opacity: .8;
 }

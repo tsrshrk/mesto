@@ -86,12 +86,21 @@ const openPopup = (popup) => {
   window.addEventListener('keydown', handleEscape);
 }
 
+//кнопка всегда неактивна при открытии
+const disableButton = (popup) => {
+  const buttonElement = popup.querySelector('.popup__button-submit');
+  buttonElement.classList.add('popup__button-submit_disabled');
+  buttonElement.disabled = true;
+}
+
 const handleEditProfile = () => {
   fillInputs();
+  disableButton(profilePopup);
   openPopup(profilePopup);
 }
 
 const handleAddCard = () => {
+  disableButton(cardAddPopup);
   openPopup(cardAddPopup);
 }
 
@@ -139,24 +148,18 @@ const createCard = (link, name) => {
   return card;
 }
 
-const profileFormSubmitHandler = (event) => {
-  event.preventDefault();
-  if (nameInput.value.trim() != '' && professionInput.value.trim() != '') {
-    profileUserName.textContent = nameInput.value;
-    profileUserProfession.textContent = professionInput.value;
-    handleCloseProfile();
-  }
+const profileFormSubmitHandler = () => {
+  profileUserName.textContent = nameInput.value;
+  profileUserProfession.textContent = professionInput.value;
+  handleCloseProfile();
 }
 
-const addCardFormSubmitHandler = (event) => {
-  event.preventDefault();
-  if (cardTitleInput.value.trim() != '' && cardImageInput.value.trim() != '') {
-    const link = cardImageInput.value;
-    const name = cardTitleInput.value;
-    const markup = createCard(link, name);
-    cardsGallery.prepend(markup);
-    handleCloseAddCard();
-  }
+const addCardFormSubmitHandler = () => {
+  const link = cardImageInput.value;
+  const name = cardTitleInput.value;
+  const markup = createCard(link, name);
+  cardsGallery.prepend(markup);
+  handleCloseAddCard();
 }
 
 const handleCloseOverlay = (popup) => {

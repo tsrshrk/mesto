@@ -28,7 +28,6 @@ const initialCards = [
 //profile
 const profilePopup = document.querySelector('.popup_user-data');
 const profileEditButton = document.querySelector('.profile__button-edit');
-const profilePopupCloseButton = document.querySelector('.popup__button-close-profile');
 const profileUserName = document.querySelector('.profile__user-name');
 const profileUserProfession = document.querySelector('.profile__user-profession');
 const profileForm = document.querySelector('.popup__form-data');
@@ -38,14 +37,12 @@ const professionInput = document.querySelector('.popup__field_input_profession')
 //add
 const cardAddButton = document.querySelector('.profile__button-add');
 const cardAddPopup = document.querySelector('.popup_add-card');
-const cardAddPopupCloseButton = document.querySelector('.popup__button-close-add-card');
 const cardAddForm = document.querySelector('.popup__form-add-card');
 const cardTitleInput = document.querySelector('.popup__field_input_card-title');
 const cardImageInput = document.querySelector('.popup__field_input_card-image');
 
 //img
 const imgPopup = document.querySelector('.popup_img');
-const imgPopupCloseButton = document.querySelector('.popup__button-close-img');
 const truescaleImg = document.querySelector('.popup__truscale-img');
 const truescaleImgTitle = document.querySelector('.popup__truscale-img-title');
 
@@ -122,18 +119,6 @@ const handleEscape = (evt) => {
   }
 }
 
-const handleCloseProfile = () => {
-  closePopup(profilePopup);
-}
-
-const handleCloseAddCard = () => {
-  closePopup(cardAddPopup);
-}
-
-const handleCloseImgPopup = () => {
-  closePopup(imgPopup);
-}
-
 const createCard = (link, name) => {
   const card = cardTemplate.querySelector('.gallery__card').cloneNode(true);
     card.querySelector('.gallery__title').textContent = name;
@@ -155,7 +140,7 @@ const saveInputs = () => {
 
 const profileFormSubmitHandler = () => {
   saveInputs();
-  handleCloseProfile();
+  closePopup(profilePopup);
 }
 
 const addCardFormSubmitHandler = () => {
@@ -163,7 +148,7 @@ const addCardFormSubmitHandler = () => {
   const name = cardTitleInput.value;
   const markup = createCard(link, name);
   cardsGallery.prepend(markup);
-  handleCloseAddCard();
+  closePopup(cardAddPopup);
 }
 
 popupList.forEach((listElement) => {
@@ -171,17 +156,16 @@ popupList.forEach((listElement) => {
     if (evt.target.classList.contains('popup_opened')) {
       closePopup(listElement);
     }
+    if (evt.target.classList.contains('popup__button-close')) {
+      closePopup(listElement);
+    }
   })
 })
 
 profileEditButton.addEventListener('click', handleEditProfile);
-profilePopupCloseButton.addEventListener('click', handleCloseProfile);
 profileForm.addEventListener('submit', profileFormSubmitHandler);
 
 cardAddButton.addEventListener('click', handleAddCard);
-cardAddPopupCloseButton.addEventListener('click', handleCloseAddCard);
 cardAddForm.addEventListener('submit', addCardFormSubmitHandler);
-
-imgPopupCloseButton.addEventListener('click', handleCloseImgPopup);
 
 renderCards();

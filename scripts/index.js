@@ -94,11 +94,13 @@ const disableButton = (popup) => {
 }
 
 const handleEditProfile = () => {
+  fillInputs();
   disableButton(profilePopup);
   openPopup(profilePopup);
 }
 
 const handleAddCard = () => {
+  cardAddForm.reset();
   disableButton(cardAddPopup);
   openPopup(cardAddPopup);
 }
@@ -125,7 +127,6 @@ const handleCloseProfile = () => {
 }
 
 const handleCloseAddCard = () => {
-  cardAddForm.reset();
   closePopup(cardAddPopup);
 }
 
@@ -174,8 +175,6 @@ const handleCloseOverlay = (popup) => {
     handleCloseProfile();
   }
 }
-
-fillInputs();
 
 popupList.forEach((listElement) => {
   listElement.addEventListener('mousedown', (evt) => {

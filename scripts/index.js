@@ -118,7 +118,7 @@ const closePopup = (popup) => {
 const handleEscape = (evt) => {
   if (evt.key === 'Escape') {
     const popupOpened = document.querySelector('.popup_opened');
-    handleCloseOverlay(popupOpened);
+    closePopup(popupOpened);
   }
 }
 
@@ -166,20 +166,10 @@ const addCardFormSubmitHandler = () => {
   handleCloseAddCard();
 }
 
-const handleCloseOverlay = (popup) => {
-  if (popup.classList.contains('popup_img')) {
-    handleCloseImgPopup();
-  } else if (popup.classList.contains('popup_add-card')) {
-    handleCloseAddCard();
-  } else {
-    handleCloseProfile();
-  }
-}
-
 popupList.forEach((listElement) => {
   listElement.addEventListener('mousedown', (evt) => {
     if (evt.target.classList.contains('popup_opened')) {
-      handleCloseOverlay(listElement);
+      closePopup(listElement);
     }
   })
 })

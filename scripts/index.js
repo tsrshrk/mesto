@@ -1,3 +1,5 @@
+import { openPopup, closePopup, handleShowImg } from './popups.js';
+
 const initialCards = [
   {
     name: 'Ольхон',
@@ -42,14 +44,14 @@ const cardTitleInput = document.querySelector('.popup__field_input_card-title');
 const cardImageInput = document.querySelector('.popup__field_input_card-image');
 
 //img
-const imgPopup = document.querySelector('.popup_img');
-const truescaleImg = document.querySelector('.popup__truscale-img');
-const truescaleImgTitle = document.querySelector('.popup__truscale-img-title');
+//const imgPopup = document.querySelector('.popup_img');
+//const truescaleImg = document.querySelector('.popup__truscale-img');
+//const truescaleImgTitle = document.querySelector('.popup__truscale-img-title');
 
 const cardsGallery = document.querySelector('.gallery');
 const cardTemplate = document.querySelector('#template').content;
 
-const popupList = Array.from(document.querySelectorAll('.popup'));
+//const popupList = Array.from(document.querySelectorAll('.popup'));
 
 const renderCards = () => {
   initialCards.forEach(el => {   //для каждого элемента (card/el/item) входного массива
@@ -72,16 +74,16 @@ const fillInputs = () => {
   professionInput.value = profileUserProfession.textContent;
 }
 
-const fillImgPopup = (link, name) => {
-  truescaleImg.src = link;
-  truescaleImg.alt = name;
-  truescaleImgTitle.textContent = name;
-}
+//const fillImgPopup = (link, name) => {
+//  truescaleImg.src = link;
+//  truescaleImg.alt = name;
+//  truescaleImgTitle.textContent = name;
+//}
 
-const openPopup = (popup) => {
-  popup.classList.add('popup_opened');
-  window.addEventListener('keydown', handleEscape);
-}
+//const openPopup = (popup) => {
+//  popup.classList.add('popup_opened');
+//  window.addEventListener('keydown', handleEscape);
+//}
 
 //кнопка всегда неактивна при открытии
 const disableButton = (popup) => {
@@ -102,22 +104,22 @@ const handleAddCard = () => {
   openPopup(cardAddPopup);
 }
 
-const handleShowImg = (link, name) => {
-  fillImgPopup(link, name);
-  openPopup(imgPopup);
-}
+//const handleShowImg = (link, name) => {
+//  fillImgPopup(link, name);
+//  openPopup(imgPopup);
+//}
 
-const closePopup = (popup) => {
-  popup.classList.remove('popup_opened');
-  window.removeEventListener('keydown', handleEscape);
-}
+//const closePopup = (popup) => {
+//  popup.classList.remove('popup_opened');
+//  window.removeEventListener('keydown', handleEscape);
+//}
 
-const handleEscape = (evt) => {
-  if (evt.key === 'Escape') {
-    const popupOpened = document.querySelector('.popup_opened');
-    closePopup(popupOpened);
-  }
-}
+//const handleEscape = (evt) => {
+//  if (evt.key === 'Escape') {
+//    const popupOpened = document.querySelector('.popup_opened');
+//    closePopup(popupOpened);
+//  }
+//}
 
 const createCard = (link, name) => {
   const card = cardTemplate.querySelector('.gallery__card').cloneNode(true);
@@ -151,16 +153,16 @@ const addCardFormSubmitHandler = () => {
   closePopup(cardAddPopup);
 }
 
-popupList.forEach((listElement) => {
-  listElement.addEventListener('mousedown', (evt) => {
-    if (evt.target.classList.contains('popup_opened')) {
-      closePopup(listElement);
-    }
-    if (evt.target.classList.contains('popup__button-close')) {
-      closePopup(listElement);
-    }
-  })
-})
+//popupList.forEach((listElement) => {
+//  listElement.addEventListener('mousedown', (evt) => {
+//    if (evt.target.classList.contains('popup_opened')) {
+//      closePopup(listElement);
+//    }
+//    if (evt.target.classList.contains('popup__button-close')) {
+//      closePopup(listElement);
+//    }
+//  })
+//})
 
 profileEditButton.addEventListener('click', handleEditProfile);
 profileForm.addEventListener('submit', profileFormSubmitHandler);

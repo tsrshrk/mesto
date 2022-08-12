@@ -1,4 +1,5 @@
 import { openPopup, closePopup, handleShowImg } from './popups.js';
+import Card from './Card.js';
 
 const initialCards = [
   {
@@ -43,47 +44,13 @@ const cardAddForm = document.querySelector('.popup__form-add-card');
 const cardTitleInput = document.querySelector('.popup__field_input_card-title');
 const cardImageInput = document.querySelector('.popup__field_input_card-image');
 
-//img
-//const imgPopup = document.querySelector('.popup_img');
-//const truescaleImg = document.querySelector('.popup__truscale-img');
-//const truescaleImgTitle = document.querySelector('.popup__truscale-img-title');
-
 const cardsGallery = document.querySelector('.gallery');
-const cardTemplate = document.querySelector('#template').content;
-
-//const popupList = Array.from(document.querySelectorAll('.popup'));
-
-const renderCards = () => {
-  initialCards.forEach(el => {   //для каждого элемента (card/el/item) входного массива
-    const markup = createCard(el.link, el.name); //генерим карточку с содержимым элемента массива
-    cardsGallery.append(markup); //добавляем в DOM
-  });
-}
-
-const removeCard = (event) => {
-  const cardRemoved = event.target.closest('.gallery__card');
-  cardRemoved.remove();
-}
-
-const handleLikeButton = (event) => {
-  event.target.classList.toggle('gallery__button-like_active');
-}
+const cardTemplate = '#template';
 
 const fillInputs = () => {
   nameInput.value = profileUserName.textContent;
   professionInput.value = profileUserProfession.textContent;
 }
-
-//const fillImgPopup = (link, name) => {
-//  truescaleImg.src = link;
-//  truescaleImg.alt = name;
-//  truescaleImgTitle.textContent = name;
-//}
-
-//const openPopup = (popup) => {
-//  popup.classList.add('popup_opened');
-//  window.addEventListener('keydown', handleEscape);
-//}
 
 //кнопка всегда неактивна при открытии
 const disableButton = (popup) => {
@@ -104,36 +71,14 @@ const handleAddCard = () => {
   openPopup(cardAddPopup);
 }
 
-//const handleShowImg = (link, name) => {
-//  fillImgPopup(link, name);
-//  openPopup(imgPopup);
-//}
-
-//const closePopup = (popup) => {
-//  popup.classList.remove('popup_opened');
-//  window.removeEventListener('keydown', handleEscape);
-//}
-
-//const handleEscape = (evt) => {
-//  if (evt.key === 'Escape') {
-//    const popupOpened = document.querySelector('.popup_opened');
-//    closePopup(popupOpened);
-//  }
-//}
-
-const createCard = (link, name) => {
-  const card = cardTemplate.querySelector('.gallery__card').cloneNode(true);
-    card.querySelector('.gallery__title').textContent = name;
-  const cardImage = card.querySelector('.gallery__image');
-    cardImage.src = link;
-    cardImage.alt = name;
-    cardImage.addEventListener('click', () => handleShowImg(link, name));
-  const buttonDelete = card.querySelector('.gallery__button-delete');
-    buttonDelete.addEventListener('click', removeCard);
-  const buttonLike = card.querySelector('.gallery__button-like');
-    buttonLike.addEventListener('click', handleLikeButton);
-  return card;
+const createCard = (el) => {
+  const card = new Card(el.name, el.link, cardTemplate);
+  return card.generateCard();
 }
+
+initialCards.forEach((el) => {
+  cardsGallery.append(createCard(el));
+});
 
 const saveInputs = () => {
   profileUserName.textContent = nameInput.value;
@@ -146,23 +91,9 @@ const profileFormSubmitHandler = () => {
 }
 
 const addCardFormSubmitHandler = () => {
-  const link = cardImageInput.value;
-  const name = cardTitleInput.value;
-  const markup = createCard(link, name);
-  cardsGallery.prepend(markup);
+  cardsGallery.prepend(createCard({name: cardTitleInput.value, link: cardImageInput.value}));
   closePopup(cardAddPopup);
 }
-
-//popupList.forEach((listElement) => {
-//  listElement.addEventListener('mousedown', (evt) => {
-//    if (evt.target.classList.contains('popup_opened')) {
-//      closePopup(listElement);
-//    }
-//    if (evt.target.classList.contains('popup__button-close')) {
-//      closePopup(listElement);
-//    }
-//  })
-//})
 
 profileEditButton.addEventListener('click', handleEditProfile);
 profileForm.addEventListener('submit', profileFormSubmitHandler);
@@ -170,4 +101,3 @@ profileForm.addEventListener('submit', profileFormSubmitHandler);
 cardAddButton.addEventListener('click', handleAddCard);
 cardAddForm.addEventListener('submit', addCardFormSubmitHandler);
 
-renderCards();

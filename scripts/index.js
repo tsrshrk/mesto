@@ -57,22 +57,27 @@ const options = {
   errorClass: 'popup__error_active'//отображение ошибки
 }
 
+const profilePopupValidator = new FormValidator(options, profilePopup);
+  profilePopupValidator.enableValidation();
+
+const cardAddPopupValidator = new FormValidator(options, cardAddPopup);
+  cardAddPopupValidator.enableValidation();
+
 const fillInputs = () => {
   nameInput.value = profileUserName.textContent;
   professionInput.value = profileUserProfession.textContent;
 }
 
 const handleEditProfile = () => {
-  profileForm.reset();
-  startValidation();
   fillInputs();
   openPopup(profilePopup);
+  profilePopupValidator.hideValidationErrors();
 }
 
 const handleAddCard = () => {
   cardAddForm.reset();
-  startValidation();
   openPopup(cardAddPopup);
+  cardAddPopupValidator.hideValidationErrors();
 }
 
 const createCard = (el) => {
@@ -82,7 +87,7 @@ const createCard = (el) => {
 
 initialCards.forEach((el) => {
   cardsGallery.append(createCard(el));
-});
+})
 
 const saveInputs = () => {
   profileUserName.textContent = nameInput.value;
@@ -110,13 +115,3 @@ profileForm.addEventListener('submit', profileFormSubmitHandler);
 
 cardAddButton.addEventListener('click', handleAddCard);
 cardAddForm.addEventListener('submit', addCardFormSubmitHandler);
-
-const formList = Array.from(document.querySelectorAll(options.formSelector));
-
-const startValidation = () => {
-  formList.forEach((formElement) => {
-    const form = new FormValidator(options, formElement);
-    form.hideValidationErrors();
-    form.enableValidation();
-  });
-}

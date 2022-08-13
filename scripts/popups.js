@@ -10,12 +10,12 @@ const fillImgPopup = (link, name) => {
 
 export function openPopup(popup) {
   popup.classList.add('popup_opened');
-  window.addEventListener('keydown', handleEscape);
+  document.addEventListener('keydown', handleEscape);
 }
 
 export function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  window.removeEventListener('keydown', handleEscape);
+  document.removeEventListener('keydown', handleEscape);
 }
 
 const handleEscape = (evt) => {
@@ -34,11 +34,8 @@ const popupList = Array.from(document.querySelectorAll('.popup'));
 
 popupList.forEach((listElement) => {
   listElement.addEventListener('mousedown', (evt) => {
-    if (evt.target.classList.contains('popup_opened')) {
+    if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__button-close')) {
       closePopup(listElement);
-    }
-    if (evt.target.classList.contains('popup__button-close')) {
-      closePopup(listElement);
-    }
-  })
+    };
+  });
 })

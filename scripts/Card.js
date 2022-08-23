@@ -1,10 +1,9 @@
-import { handleShowImg } from './popups.js';
-
 export default class Card {
-  constructor(text, image, templateSelector) {
+  constructor(text, image, templateSelector, handleCardClick) {
     this._text = text;
     this._image = image;
     this._templateSelector = templateSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -38,13 +37,9 @@ export default class Card {
     this._element = null;
   }
 
-  _handleShowPopupClick() {
-    handleShowImg(this._image, this._text);
-  }
-
   _setEventListeners() {
     this._elementImage.addEventListener('click', () => {
-      this._handleShowPopupClick();
+      this._handleCardClick();
     });
     this._elementLikeButton.addEventListener('click', () => {
       this._handleLikeClick();

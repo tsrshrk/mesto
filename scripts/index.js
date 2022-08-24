@@ -92,7 +92,7 @@ const createCard = (el) => {
 }
 
 const cardList = new Section({
-  items: initialCards,
+  items: initialCards.reverse(),
   renderer: (item) => {
     cardList.addItem(createCard(item));
   }}, '.gallery'); //!!!!!!!!!!!!!!!!!!!!!!!!
@@ -113,8 +113,9 @@ imgPopup.setEventListeners();
 
 const profileEditForm = new PopupWithForm({
   popupSelector: '.popup_user-data', //!!!!!!!!!!!!!!!!!!!!!!!!!!
-  handleFormSubmit: (formData) => {
-    userData.setUserInfo(formData);
+  handleFormSubmit: (inputData) => {
+    console.log(inputData);
+    userData.setUserInfo(inputData);
     profileEditForm.close();
     profilePopupValidator.hideValidationErrors();
   }
@@ -124,8 +125,9 @@ profileEditForm.setEventListeners();
 
 const cardAddForm = new PopupWithForm({
   popupSelector: '.popup_add-card', //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  handleFormSubmit: (formData) => {
-    cardList.addItem(createCard(formData));
+  handleFormSubmit: (inputData) => {
+    console.log(inputData);//!!!!!!!!!!!!!!!!!!!!
+    cardList.addItem(createCard(inputData));
     cardAddForm.close();
   }
 });

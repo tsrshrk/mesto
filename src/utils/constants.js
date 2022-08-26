@@ -30,6 +30,8 @@ export const profilePopup = document.querySelector('.popup_user-data');
 export const profileEditButton = document.querySelector('.profile__button-edit');
 export const nameInput = document.querySelector('.popup__field_input_name');
 export const professionInput = document.querySelector('.popup__field_input_profession');
+export const nameField = document.querySelector('.profile__user-name');
+export const professionField = document.querySelector('.profile__user-profession');
 
 //add
 export const cardAddButton = document.querySelector('.profile__button-add');

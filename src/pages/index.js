@@ -6,7 +6,7 @@ import Section from '../components/Section.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import {initialCards, profilePopup, profileEditButton, nameInput, professionInput,
-  cardAddButton, cardAddPopup, cardTemplate, options} from '../utils/constants.js';
+  cardAddButton, cardAddPopup, cardTemplate, options, nameField, professionField} from '../utils/constants.js';
 
 const profilePopupValidator = new FormValidator(options, profilePopup);
   profilePopupValidator.enableValidation();
@@ -22,8 +22,8 @@ const createCard = (el) => {
 }
 
 const userData = new UserInfo(
-  document.querySelector('.profile__user-name').textContent,
-  document.querySelector('.profile__user-profession').textContent
+  nameField.textContent,
+  professionField.textContent
 );
 
 const imgPopup = new PopupWithImage('.popup_img');

@@ -3,6 +3,8 @@ export default class UserInfo {
     this._name = name;
     this._profession = profession;
     this.setUserInfo = this.setUserInfo.bind(this);
+    this._nameField = document.querySelector('.profile__user-name');
+    this._professionField = document.querySelector('.profile__user-profession');
   }
 
   getUserInfo() {
@@ -15,7 +17,7 @@ export default class UserInfo {
   setUserInfo(obj) {
     this._name = obj.name;
     this._profession = obj.profession;
-    document.querySelector('.profile__user-name').textContent = obj.name;
-    document.querySelector('.profile__user-profession').textContent = obj.profession;
+    this._nameField.textContent = obj.name;
+    this._professionField.textContent = obj.profession;
   }
 }

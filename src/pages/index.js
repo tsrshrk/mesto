@@ -20,21 +20,12 @@ const createCard = (el) => {
   return card.generateCard();
 }
 
-const cardList = new Section({
-  items: initialCards,
-  renderer: (item) => {
-    cardList.addItem(createCard(item));
-  }}, '.gallery');
-
-cardList.renderItems();
-
 const userData = new UserInfo(
   document.querySelector('.profile__user-name').textContent,
   document.querySelector('.profile__user-profession').textContent
 );
 
 const imgPopup = new PopupWithImage('.popup_img');
-imgPopup.setEventListeners();
 
 const profileEditForm = new PopupWithForm({
   popupSelector: '.popup_user-data',
@@ -46,8 +37,6 @@ const profileEditForm = new PopupWithForm({
   }
 });
 
-profileEditForm.setEventListeners();
-
 const cardAddForm = new PopupWithForm({
   popupSelector: '.popup_add-card',
   handleFormSubmit: (inputData) => {
@@ -57,6 +46,14 @@ const cardAddForm = new PopupWithForm({
   }
 });
 
+const cardList = new Section({
+  items: initialCards,
+  renderer: (item) => {
+    cardList.addItem(createCard(item));
+  }}, '.gallery');
+
+imgPopup.setEventListeners();
+profileEditForm.setEventListeners();
 cardAddForm.setEventListeners();
 
 profileEditButton.addEventListener('click', () => {
@@ -69,3 +66,5 @@ cardAddButton.addEventListener('click', () => {
   cardAddForm.open();
   cardAddPopupValidator.hideValidationErrors();
 });
+
+cardList.renderItems();

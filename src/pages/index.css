@@ -36,3 +36,5 @@
 @import url(../blocks/popup/__error/popup__error.css);
 @import url(../blocks/popup/__button-submit/_disabled/popup__button-submit_disabled.css);
 @import url(../blocks/popup/__error/_active/popup__error_active.css);
+@import url(../blocks/profile/__button-edit-avatar/profile__button-edit-avatar.css);
+@import url(../blocks/popup/__title/_confirm/popup__title_confirm.css);

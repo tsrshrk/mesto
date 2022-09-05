@@ -18,6 +18,7 @@
     <main>
       <section class="profile">
         <img class="profile__user-avatar" src="<%=require('./images/profile__Avatar.jpg')%>" alt="Фото профиля">
+        <button class="profile__button-edit-avatar" type="button" aria-label="Обновить аватар"></button>
         <div class="profile__info">
           <h1 class="profile__user-name">Жак-Ив Кусто</h1>
           <button class="profile__button-edit" type="button" aria-label="Редактировать"></button>
@@ -77,6 +78,28 @@
         <img class="popup__truscale-img" src="https://images.unsplash.com/photo-1548130516-2ca6aaeb84b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" alt="Ольхон">
         <p class="popup__truscale-img-title"></p>
       </div>
+    </div>
+  </div>
+
+  <div class="popup popup_user-avatar">
+    <div class="popup__container">
+      <button class="popup__button-close popup__button-close-avatar" type="button" aria-label="Закрыть"></button>
+      <h2 class="popup__title">Обновить аватар</h2>
+      <form name="form-useravatar" class="popup__form popup__form-avatar" novalidate>
+        <fieldset class="popup__fields">
+          <input id="avatar" class="popup__field popup__field_input_card-title" name="link" type="url" placeholder="URL нового аватара" required>
+          <span class="popup__error popup__error-avatar"></span>
+        </fieldset>
+        <button class="popup__button-submit" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup_confirm popup_opened">
+    <div class="popup__container">
+      <button class="popup__button-close popup__button-close-confirm" type="button" aria-label="Закрыть"></button>
+      <h2 class="popup__title popup__title_confirm">Вы уверены?</h2>
+      <button class="popup__button-submit" type="button" aria-label="Да">Да</button>
     </div>
   </div>
 

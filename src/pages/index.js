@@ -48,7 +48,7 @@ const cardAddForm = new PopupWithForm({
 });
 
 const cardList = new Section({
-  items: initialCards,
+  items: initialCards.reverse(),
   renderer: (item) => {
     cardList.addItem(createCard(item));
   }}, '.gallery');

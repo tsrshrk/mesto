@@ -1,0 +1,5 @@
+.gallery__like {
+  grid-area: like;
+  height: 35px;
+  margin-right: 20px;
+}

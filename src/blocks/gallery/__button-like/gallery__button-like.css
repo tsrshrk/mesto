@@ -1,12 +1,12 @@
 .gallery__button-like {
-  grid-area: button;
+  /*grid-area: button;*/
   background-image: url(../../../images/icons/like.svg);
   background-repeat: no-repeat;
   width: 22px;
   height: 19px;
   border: none;
   background-color: #fff;
-  margin: 0 20px 0 15px;
+  /*margin: 0 20px 0 15px;*/
   cursor: pointer;
   transition: opacity .2s linear .2s;
 }

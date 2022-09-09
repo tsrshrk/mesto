@@ -5,8 +5,20 @@ import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
-import {initialCards, profilePopup, profileEditButton, nameInput, professionInput,
-  cardAddButton, cardAddPopup, cardTemplate, options, nameField, professionField} from '../utils/constants.js';
+import {profilePopup, profileEditButton, nameInput, professionInput,
+  cardAddButton, cardAddPopup, cardTemplate, options, nameField, professionField, profileAvatar, profileAvatarButton} from '../utils/constants.js';
+import PopupWithConfirm from '../components/PopupWithConfirm.js';
+import Api from '../components/Api.js';
+
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-49',
+  headers: {
+    authorization: '66dba6b5-333b-43ce-bfad-80e11ad70514',
+    'Content-Type': 'application/json'
+  }
+});
+
+const userInfo = new UserInfo('.profile__user-name', '.profile__user-profession', '.profile__user-avatar');
 
 const profilePopupValidator = new FormValidator(options, profilePopup);
   profilePopupValidator.enableValidation();

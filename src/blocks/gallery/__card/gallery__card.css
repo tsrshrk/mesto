@@ -4,7 +4,7 @@
   grid-template-rows: 1fr 79px;
   grid-template-areas:
   "image image"
-  "title button";
+  "title like";
   background-color: #fff;
   border-radius: 9px;
   align-items: center;

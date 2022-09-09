@@ -1,6 +1,7 @@
 export default class Popup {
   constructor (popupSelector) {
     this._popup = document.querySelector(popupSelector);
+    this._buttonSubmit = this._popup.querySelector('.popup__button-submit');
   }
 
   open() {
@@ -25,5 +26,13 @@ export default class Popup {
         this.close();
       };
     });
+  }
+
+  loading(isLoading, message) {
+    if (isLoading) {
+      this._buttonSubmit.textContent = message;
+    } else {
+      this._buttonSubmit.textContent = message;
+    }
   }
 }

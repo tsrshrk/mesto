@@ -45,12 +45,12 @@ export default class Card {
     return this._element;
   }
 
-  toggleLikes() {
+  toggleLikes(likes) {
     this._elementLikeButton.classList.toggle('gallery__button-like_active');
-    this._elementLikeCounter.textContent = like.length;
+    this._elementLikeCounter.textContent = likes.length;
   }
 
-  removeCard() {
+  removeItem() {
     this._element.remove();
     this._element = null;
   }

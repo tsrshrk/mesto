@@ -5,7 +5,7 @@ export const nameInput = document.querySelector('.popup__field_input_name');
 export const professionInput = document.querySelector('.popup__field_input_profession');
 export const nameField = document.querySelector('.profile__user-name');
 export const professionField = document.querySelector('.profile__user-profession');
-export const profileAvatar = document.querySelector('.popup_user-avatar');
+export const profileEditAvatar = document.querySelector('.popup_user-avatar');
 export const profileAvatarButton = document.querySelector('.profile__button-edit-avatar');
 
 //add
